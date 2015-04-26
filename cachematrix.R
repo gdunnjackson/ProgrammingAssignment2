@@ -28,10 +28,7 @@ cacheSolve <- function(x=numeric()) {
         b <- c(x)                                      ##create vector from input
         print(b)                                       ##print vector
         matr2 <- matrix(b,2,2)                         ##create matrix from vector
-        if (matr1[1] == matr2[1] && matr1[2]==matr2[2] ## if matrix has not changed
-            && matr1[3]== matr2[3] && matr1[4]==matr2[4] 
-                    && (!is.null(invrmatr1))) {        ## if inverse matrix is cached
-                return(invrmatr1)}                     ## return the inverse matrix
-        else {invrmatr2 <- solve(matr2)                ## if matrix is different, calculate
-              return(invrmatr2)}                       ## the inverse matrix andreturn the value
+        ifelse ((matr1 == matr2 && !is.null(invrmatr1)), ## if matrix is same and not null
+        return(invrmatr1),invrmatr1 <- solve(matr2))   ## return inverse matrix from cache
+        return(invrmatr1)                              ## else calculate & return the inverse
 }
