@@ -22,7 +22,9 @@ makeCacheMatrix <- function(x=numeric()) {
 
 ## cacheSolve is a function that computes the inverse of the special "matrix" returned 
 ## by makeCacheMatrix. If the inverse has already been calculated(and the matrix has
-## not changed), then the cachesolve will retrieve the inverse from the cache. 
+## not changed), then the cachesolve will retrieve the inverse from the cache.
+## makeCacheMatrix takes a vector as input in the form of c(n,n,n,n,) or c(n:n)
+## to create a square vector of 2 columns by 2 rows.
 
 cacheSolve <- function(x=numeric()) {
         b <- c(x)                                      ##create vector from input
