@@ -10,9 +10,10 @@
 
 
 makeCacheMatrix <- function(x=numeric()) {
-        a <- c(x)                             ## create vector from input x
+        invrmatr1 <<- NULL                    ## initialize inverse matrix as NULL
+        a <<- c(x)                             ## create vector from input x
         print(a)                              ## print vector(a) 
-        matr1 <- matrix(a,2,2)                ## create 2 by 2 matrix from vector(a)
+        matr1 <<- matrix(a,2,2)               ## create 2 by 2 matrix from vector(a)
         print(matr1)                          ## print matrix (matr1)
         invrmatr1 <<- solve(matr1)            ## create inverse of matrix (matr1)
         print(invrmatr1)                      ## print inverse matrix (invrmatr1)
@@ -21,9 +22,16 @@ makeCacheMatrix <- function(x=numeric()) {
 
 ## cacheSolve is a function that computes the inverse of the special "matrix" returned 
 ## by makeCacheMatrix. If the inverse has already been calculated(and the matrix has
-## not changed), then the cachesolve should retrieve the inverse from the cache.
+## not changed), then the cachesolve will retrieve the inverse from the cache. 
 
-## cacheSolve <- function(x, ...) {
-## Return a matrix that is the inverse of 'x'
-##        i <- x$getinverse
-##}
+cacheSolve <- function(x=numeric()) {
+        b <- c(x)                                      ##create vector from input
+        print(b)                                       ##print vector
+        matr2 <- matrix(b,2,2)                         ##create matrix from vector
+        if (matr1[1] == matr2[1] && matr1[2]==matr2[2] ## if matrix has not changed
+            && matr1[3]== matr2[3] && matr1[4]==matr2[4] 
+                    && (!is.null(invrmatr1))) {        ## if inverse matrix is cached
+                return(invrmatr1)}                     ## return the inverse matrix
+        else {invrmatr2 <- solve(matr2)                ## if matrix is different, calculate
+              return(invrmatr2)}                       ## the inverse matrix andreturn the value
+}
