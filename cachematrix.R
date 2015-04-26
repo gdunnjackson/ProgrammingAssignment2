@@ -11,19 +11,19 @@
 
 makeCacheMatrix <- function(x=numeric()) {
         invrmatr1 <<- NULL                    ## initialize inverse matrix as NULL
-        a <<- c(x)                             ## create vector from input x
-        print(a)                              ## print vector(a) 
-        matr1 <<- matrix(a,2,2)               ## create 2 by 2 matrix from vector(a)
+        a <<- c(x)                            ## create vector from input x
+        print(a)                              ## print vector 
+        matr1 <<- matrix(a,2,2)               ## create 2 by 2 matrix from vector
         print(matr1)                          ## print matrix (matr1)
-        invrmatr1 <<- solve(matr1)            ## create inverse of matrix (matr1)
-        print(invrmatr1)                      ## print inverse matrix (invrmatr1)
+        invrmatr1 <<- solve(matr1)            ## create and cache inverse of matrix 
+        print(invrmatr1)                      ## print inverse matrix 
 
 }
 
 ## cacheSolve is a function that computes the inverse of the special "matrix" returned 
 ## by makeCacheMatrix. If the inverse has already been calculated(and the matrix has
 ## not changed), then the cachesolve will retrieve the inverse from the cache.
-## makeCacheMatrix takes a vector as input in the form of c(n,n,n,n,) or c(n:n)
+## cacheSolve takes a vector as input in the form of c(n,n,n,n,) or c(n:n)
 ## to create a square vector of 2 columns by 2 rows.
 
 cacheSolve <- function(x=numeric()) {
