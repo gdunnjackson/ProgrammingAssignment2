@@ -13,7 +13,7 @@ makeCacheMatrix <- function(x=numeric()) {
         invrmatr1 <<- NULL                    ## initialize inverse matrix as NULL
         a <<- c(x)                            ## create vector from input x
         print(a)                              ## print vector 
-        matr1 <<- matrix(a,2,2)               ## create 2 by 2 matrix from vector
+        matr1 <<- matrix(a,2,2)               ## create and cache 2 by 2 matrix from vector
         print(matr1)                          ## print matrix (matr1)
         invrmatr1 <<- solve(matr1)            ## create and cache inverse of matrix 
         print(invrmatr1)                      ## print inverse matrix 
@@ -30,7 +30,7 @@ cacheSolve <- function(x=numeric()) {
         b <- c(x)                                      ##create vector from input
         print(b)                                       ##print vector
         matr2 <- matrix(b,2,2)                         ##create matrix from vector
-        ifelse ((matr1 == matr2 && !is.null(invrmatr1)), ## if matrix is same and not null
+        ifelse ((matr1 == matr2 && !is.null(invrmatr1)), ## if matrix is same as cache and not null
         return(invrmatr1),invrmatr1 <- solve(matr2))   ## return inverse matrix from cache
         return(invrmatr1)                              ## else calculate & return the inverse
 }
